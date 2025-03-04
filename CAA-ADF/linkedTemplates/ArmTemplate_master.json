@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "CAA-ADF"
+		},
+		"ls_backenddata_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://backenddataadls.blob.core.windows.net/"
+		},
+		"ls_backenddata_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "ff05faeb-f1fd-4af8-9f9f-5541837df902"
+		},
+		"ls_backenddata_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "@{linkedService().ls_prm_app_id}"
+		},
+		"ls_caaadls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://caaadls.dfs.core.windows.net/"
+		},
+		"ls_caaadls_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "ff05faeb-f1fd-4af8-9f9f-5541837df902"
+		},
+		"ls_caaadls_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "@{linkedService().ls_prm_add_id}"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://caa-azure-key-vault.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "CAA-ADF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_key_vault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_key_vault_properties_typeProperties_baseUrl')]"
+					},
+					"ls_backenddata_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('ls_backenddata_properties_typeProperties_serviceEndpoint')]"
+					},
+					"ls_backenddata_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_backenddata_properties_typeProperties_tenant')]"
+					},
+					"ls_backenddata_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ls_backenddata_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ls_caaadls_properties_typeProperties_url": {
+						"value": "[parameters('ls_caaadls_properties_typeProperties_url')]"
+					},
+					"ls_caaadls_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_caaadls_properties_typeProperties_tenant')]"
+					},
+					"ls_caaadls_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ls_caaadls_properties_typeProperties_servicePrincipalId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

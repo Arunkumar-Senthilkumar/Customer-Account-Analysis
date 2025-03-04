@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "CAA-ADF"
+		},
+		"ls_backenddata_properties_typeProperties_serviceEndpoint": {
+			"value": "https://backenddataadls.blob.core.windows.net/"
+		},
+		"ls_backenddata_properties_typeProperties_tenant": {
+			"value": "ff05faeb-f1fd-4af8-9f9f-5541837df902"
+		},
+		"ls_backenddata_properties_typeProperties_servicePrincipalId": {
+			"value": "@{linkedService().ls_prm_app_id}"
+		},
+		"ls_caaadls_properties_typeProperties_url": {
+			"value": "https://caaadls.dfs.core.windows.net/"
+		},
+		"ls_caaadls_properties_typeProperties_tenant": {
+			"value": "ff05faeb-f1fd-4af8-9f9f-5541837df902"
+		},
+		"ls_caaadls_properties_typeProperties_servicePrincipalId": {
+			"value": "@{linkedService().ls_prm_add_id}"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"value": "https://caa-azure-key-vault.vault.azure.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
