@@ -3,7 +3,8 @@
 	"properties": {
 		"parameters": {
 			"ls_prm_app_id": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
 			}
 		},
 		"annotations": [],
