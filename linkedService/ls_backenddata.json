@@ -1,12 +1,28 @@
 {
 	"name": "ls_backenddata",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"parameters": {
+			"ls_prm_app_id": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"connectionString": "DefaultEndpointsProtocol=https;AccountName=backenddataadls;EndpointSuffix=core.windows.net;",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDQyRUQ4QzVDLTJCOUUtNDg2Mi1BQ0Y5LTQ1QkNBNjkyNDQ4MF9iYTQxZmVhYi00ZWJlLTQyNGQtYWRiMS00NTE4OGMyMDU5MzIiDQp9"
+			"serviceEndpoint": "https://backenddataadls.blob.core.windows.net/",
+			"tenant": "ff05faeb-f1fd-4af8-9f9f-5541837df902",
+			"servicePrincipalId": "@{linkedService().ls_prm_app_id}",
+			"servicePrincipalCredentialType": "ServicePrincipalKey",
+			"servicePrincipalCredential": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_key_vault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "caa-sp"
+			},
+			"accountKind": "StorageV2"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
