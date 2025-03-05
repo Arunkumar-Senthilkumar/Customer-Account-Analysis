@@ -13,11 +13,7 @@
 				},
 				"secretName": "CAA-databricks"
 			},
-			"newClusterNodeType": "Standard_D4ds_v5",
-			"newClusterNumOfWorker": "1",
-			"newClusterVersion": "15.4.x-photon-scala2.12",
-			"clusterOption": "Fixed",
-			"newClusterInitScripts": []
+			"existingClusterId": "0304-230859-yn7hge9l"
 		}
 	}
 }
