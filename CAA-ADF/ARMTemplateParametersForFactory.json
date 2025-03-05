@@ -14,6 +14,9 @@
 		"ls_backenddata_properties_typeProperties_servicePrincipalId": {
 			"value": "@{linkedService().ls_prm_app_id}"
 		},
+		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
+			"value": "0304-230859-yn7hge9l"
+		},
 		"ls_caaadls_properties_typeProperties_url": {
 			"value": "https://caaadls.dfs.core.windows.net/"
 		},
@@ -25,9 +28,6 @@
 		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"value": "https://caa-azure-key-vault.vault.azure.net/"
-		},
-		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
-			"value": "0304-230859-yn7hge9l"
 		}
 	}
 }

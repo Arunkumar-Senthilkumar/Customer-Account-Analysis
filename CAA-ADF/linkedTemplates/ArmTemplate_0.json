@@ -23,6 +23,10 @@
 			"type": "string",
 			"defaultValue": "@{linkedService().ls_prm_app_id}"
 		},
+		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0304-230859-yn7hge9l"
+		},
 		"ls_caaadls_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://caaadls.dfs.core.windows.net/"
@@ -34,10 +38,6 @@
 		"ls_caaadls_properties_typeProperties_servicePrincipalId": {
 			"type": "string",
 			"defaultValue": "@{linkedService().ls_prm_add_id}"
-		},
-		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
-			"type": "string",
-			"defaultValue": "0304-230859-yn7hge9l"
 		}
 	},
 	"variables": {
@@ -91,6 +91,30 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ls_caa_databricks')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-3940523104806311.11.azuredatabricks.net",
+					"accessToken": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "ls_key_vault",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "CAA-databricks"
+					},
+					"existingClusterId": "[parameters('ls_caa_databricks_properties_typeProperties_existingClusterId')]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ls_caaadls')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -123,37 +147,16 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ls_caa_databricks')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://adb-3940523104806311.11.azuredatabricks.net",
-					"accessToken": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "ls_key_vault",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "CAA-databricks"
-					},
-					"existingClusterId": "[parameters('ls_caa_databricks_properties_typeProperties_existingClusterId')]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ds_backenddata')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_backenddata",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"ls_prm_app_id": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
+					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",
