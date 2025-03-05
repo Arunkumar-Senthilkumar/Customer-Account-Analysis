@@ -3,7 +3,10 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_backenddata",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"ls_prm_app_id": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
