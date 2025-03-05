@@ -26,6 +26,9 @@
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"value": "https://caa-azure-key-vault.vault.azure.net/"
 		},
+		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
+			"value": "0304-230859-yn7hge9l"
+		},
 		"containerUri": {
 			"value": ""
 		},

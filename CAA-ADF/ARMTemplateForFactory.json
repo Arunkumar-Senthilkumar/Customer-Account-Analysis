@@ -34,6 +34,10 @@
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://caa-azure-key-vault.vault.azure.net/"
+		},
+		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0304-230859-yn7hge9l"
 		}
 	},
 	"variables": {
@@ -160,6 +164,56 @@
 								}
 							]
 						}
+					},
+					{
+						"name": "Fail1",
+						"type": "Fail",
+						"dependsOn": [
+							{
+								"activity": "ForEach1",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"message": {
+								"value": "@activity('Copy data1').output",
+								"type": "Expression"
+							},
+							"errorCode": {
+								"value": "@activity('Copy data1').output",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Notebook1",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "ForEach1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/CAA Workspace/data cleaning"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_caa_databricks",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"policy": {
@@ -170,6 +224,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_backenddata')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_caa_databricks')]",
 				"[concat(variables('factoryId'), '/datasets/ds_caaadls')]"
 			]
 		},
@@ -224,7 +279,10 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_caaadls",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"ls_prm_add_id": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
+					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -321,6 +379,30 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_caa_databricks')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-3940523104806311.11.azuredatabricks.net",
+					"accessToken": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "ls_key_vault",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "CAA-databricks"
+					},
+					"existingClusterId": "[parameters('ls_caa_databricks_properties_typeProperties_existingClusterId')]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
 		}
 	]
 }
