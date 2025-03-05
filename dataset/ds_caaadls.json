@@ -3,10 +3,7 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_caaadls",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"ls_prm_add_id": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
-			}
+			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
