@@ -1,18 +1,12 @@
 {
 	"name": "ls_caaadls",
 	"properties": {
-		"parameters": {
-			"ls_prm_add_id": {
-				"type": "string",
-				"defaultValue": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
-			}
-		},
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
 			"url": "https://caaadls.dfs.core.windows.net/",
 			"tenant": "ff05faeb-f1fd-4af8-9f9f-5541837df902",
-			"servicePrincipalId": "@{linkedService().ls_prm_add_id}",
+			"servicePrincipalId": "aed8a39b-4d88-4eb3-865d-9c780297a4ca",
 			"servicePrincipalCredentialType": "ServicePrincipalKey",
 			"servicePrincipalCredential": {
 				"type": "AzureKeyVaultSecret",
