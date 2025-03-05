@@ -101,13 +101,7 @@
 							"inputs": [
 								{
 									"referenceName": "ds_backenddata",
-									"type": "DatasetReference",
-									"parameters": {
-										"ds_prm_app_id": {
-											"value": "@pipeline().parameters.pr_prm_app_id",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
