@@ -12,7 +12,7 @@
 			"value": "ff05faeb-f1fd-4af8-9f9f-5541837df902"
 		},
 		"ls_backenddata_properties_typeProperties_servicePrincipalId": {
-			"value": "@{linkedService().ls_prm_app_id}"
+			"value": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
 		},
 		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
 			"value": "0304-230859-yn7hge9l"
@@ -24,7 +24,7 @@
 			"value": "ff05faeb-f1fd-4af8-9f9f-5541837df902"
 		},
 		"ls_caaadls_properties_typeProperties_servicePrincipalId": {
-			"value": "@{linkedService().ls_prm_add_id}"
+			"value": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
 		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"value": "https://caa-azure-key-vault.vault.azure.net/"

@@ -17,7 +17,7 @@
 		},
 		"ls_backenddata_properties_typeProperties_servicePrincipalId": {
 			"type": "string",
-			"defaultValue": "@{linkedService().ls_prm_app_id}"
+			"defaultValue": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
 		},
 		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
 			"type": "string",
@@ -33,7 +33,7 @@
 		},
 		"ls_caaadls_properties_typeProperties_servicePrincipalId": {
 			"type": "string",
-			"defaultValue": "@{linkedService().ls_prm_add_id}"
+			"defaultValue": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
 		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -212,10 +212,7 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_backenddata",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"ls_prm_app_id": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
-					}
+					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -259,10 +256,7 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_caaadls",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"ls_prm_add_id": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
-					}
+					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -287,12 +281,6 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"parameters": {
-					"ls_prm_app_id": {
-						"type": "string",
-						"defaultValue": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
-					}
-				},
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
@@ -344,12 +332,6 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"parameters": {
-					"ls_prm_add_id": {
-						"type": "string",
-						"defaultValue": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
-					}
-				},
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
