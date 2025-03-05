@@ -345,29 +345,6 @@
 						}
 					},
 					{
-						"name": "Fail1",
-						"type": "Fail",
-						"dependsOn": [
-							{
-								"activity": "ForEach1",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"message": {
-								"value": "@activity('Copy data1').output",
-								"type": "Expression"
-							},
-							"errorCode": {
-								"value": "@activity('Copy data1').output",
-								"type": "Expression"
-							}
-						}
-					},
-					{
 						"name": "Notebook1",
 						"type": "DatabricksNotebook",
 						"dependsOn": [
