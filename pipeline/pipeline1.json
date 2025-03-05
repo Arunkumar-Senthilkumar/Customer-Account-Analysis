@@ -101,7 +101,13 @@
 							"inputs": [
 								{
 									"referenceName": "ds_backenddata",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"ds_prm_app_id": {
+											"value": "@pipeline().parameters.pr_prm_app_id",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
@@ -142,6 +148,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"pr_prm_app_id": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2025-03-03T22:52:51Z"
 	},
