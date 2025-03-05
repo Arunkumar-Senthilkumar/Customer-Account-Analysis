@@ -17,7 +17,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_backenddata",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_prm_app_id": {
+								"value": "@pipeline().parameters.pr_prm_app_id",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems",
