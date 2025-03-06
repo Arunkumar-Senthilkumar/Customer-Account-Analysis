@@ -19,10 +19,6 @@
 			"type": "string",
 			"defaultValue": "aed8a39b-4d88-4eb3-865d-9c780297a4ca"
 		},
-		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
-			"type": "string",
-			"defaultValue": "0304-230859-yn7hge9l"
-		},
 		"ls_caaadls_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://caaadls.dfs.core.windows.net/"
@@ -38,6 +34,10 @@
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://caa-azure-key-vault.vault.azure.net/"
+		},
+		"ls_caa_databricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0305-234554-xrmnfmx7"
 		},
 		"containerUri": {
 			"type": "string",
@@ -78,9 +78,6 @@
 					"ls_backenddata_properties_typeProperties_servicePrincipalId": {
 						"value": "[parameters('ls_backenddata_properties_typeProperties_servicePrincipalId')]"
 					},
-					"ls_caa_databricks_properties_typeProperties_existingClusterId": {
-						"value": "[parameters('ls_caa_databricks_properties_typeProperties_existingClusterId')]"
-					},
 					"ls_caaadls_properties_typeProperties_url": {
 						"value": "[parameters('ls_caaadls_properties_typeProperties_url')]"
 					},
@@ -89,6 +86,9 @@
 					},
 					"ls_caaadls_properties_typeProperties_servicePrincipalId": {
 						"value": "[parameters('ls_caaadls_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ls_caa_databricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_caa_databricks_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},
